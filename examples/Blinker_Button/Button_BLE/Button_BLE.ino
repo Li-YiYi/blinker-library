@@ -1,12 +1,19 @@
 #define BLINKER_BLE
 
 #include <Blinker.h>
-#include <Servo.h>
 
 #define BUTTON_1 "ButtonKey"
 
 BlinkerButton Button1(BUTTON_1);
-Servo myservo;
+
+
+void servopulse(int angle){
+    int pulsewidth=(angle*11)+500;  //将角度转化为500-2480的脉宽值，每多转1度，对应高电平多11us
+    digitalWrite(11,HIGH); 
+    delayMicroseconds(pulsewidth);  //延时脉宽值的微秒数
+    digitalWrite(11,LOW);     //将舵机接口电平至低
+    delayMicroseconds(20000-pulsewidth);
+}    
 
 void button1_callback(const String & state)
 {
@@ -18,14 +25,18 @@ void button1_callback(const String & state)
     else if (state == BLINKER_CMD_ON) {
         BLINKER_LOG("Toggle on!");
         Button1.print("on");
-        myservo.write(165);
-        Blinker.delay(25);
+        for(int i=0;i<50;i++)
+        {
+          servopulse(165);
+        }   
     }
     else if (state == BLINKER_CMD_OFF) {
         BLINKER_LOG("Toggle off!");
         Button1.print("off");
-        myservo.write(15);
-        Blinker.delay(25);
+        for(int i=0;i<50;i++)
+        {
+          servopulse(15);
+        }   
     }
     else {
         BLINKER_LOG("Get user setting: ", state);
@@ -41,7 +52,6 @@ void setup()
 
     Blinker.begin();
     Button1.attach(button1_callback);
-    myservo.attach(11);
 }
 
 void loop()
