@@ -37,11 +37,11 @@ void setup()
     Serial.begin(115200);
     BLINKER_DEBUG.stream(Serial);
 
-    pinMode(9, OUTPUT);
+    pinMode(11, OUTPUT);
 
     Blinker.begin();
     Button1.attach(button1_callback);
-    myservo.attach(9);
+    myservo.attach(11);
 }
 
 void loop()
