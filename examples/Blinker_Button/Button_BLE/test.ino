@@ -1,18 +1,7 @@
 #include <Servo.h>
-
 Servo servo;
-
-
-
-
-
-
-
-
 void setup(){
-
-	servo.attach(11);
-
+    servo.attach(11);
 }
 
 void loop() {
@@ -20,5 +9,4 @@ void loop() {
     delay(1000);
     servo.write(150);
     delay(1000);
-
 }
