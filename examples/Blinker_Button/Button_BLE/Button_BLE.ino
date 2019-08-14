@@ -17,7 +17,7 @@ void button1_callback(const String & state)
     }
     else if (state == BLINKER_CMD_ON) {
         BLINKER_LOG("Toggle on!");
-        myservo.write(165)
+        myservo.write(165);
         Button1.print("on");
     }
     else if (state == BLINKER_CMD_OFF) {
