@@ -39,7 +39,7 @@ void setup()
 
     Blinker.begin();
     Button1.attach(button1_callback);
-    myservo.attach(9)
+    myservo.attach(9);
 }
 
 void loop()
