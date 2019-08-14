@@ -17,13 +17,15 @@ void button1_callback(const String & state)
     }
     else if (state == BLINKER_CMD_ON) {
         BLINKER_LOG("Toggle on!");
-        myservo.write(165);
         Button1.print("on");
+        myservo.write(165);
+        Blinker.delay(25);
     }
     else if (state == BLINKER_CMD_OFF) {
         BLINKER_LOG("Toggle off!");
-        myservo.write(15);
         Button1.print("off");
+        myservo.write(15);
+        Blinker.delay(25);
     }
     else {
         BLINKER_LOG("Get user setting: ", state);
